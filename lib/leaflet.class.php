@@ -240,7 +240,7 @@ class LeafLet extends Control
     function AddMarkerTitled($lat, $lng, $title, $options = [])
     {
         $options['title'] = $title;
-        $this->_markers[] = array($lat,$lng,$options);
+        $this->_markers[] = [$lat, $lng, $options];
         return $this;
     }
 

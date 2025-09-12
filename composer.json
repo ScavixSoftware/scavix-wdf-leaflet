@@ -11,5 +11,23 @@
 	},
 	"require": {
         "scavix/wdf-core": "^1.0.0"
-	}
+	},
+    "extra":
+    {
+        "externals":
+        [
+            {
+                "name": "Leaflet",
+                "version": "1.9.4",
+                "homepage": "https://leafletjs.com",
+                "description": "Leaflet is the leading open-source JavaScript library for building powerful interactive maps.",
+                "license": "BSD 2-Clause",
+                "files":
+                {
+                    "res/leaflet.js":"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
+                    "res/leaflet.css":"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+                }
+            }
+        ]
+    }
 }
