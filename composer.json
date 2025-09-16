@@ -1,48 +1,44 @@
 {
-	"name": "scavix/wdf-leaflet",
-	"version": "1.0.1",
-	"description": "Leaflet component",
-	"type": "library",
-	"license": "LGPL-3.0-or-later",
-    "authors": [
-		{
-			"name": "Scavix Software GmbH & Co. KG",
-			"email": "info@scavix.com",
-			"homepage": "http://www.scavix.com/"
-		},
-		{
-			"name": "Christoph Bünger",
-			"homepage": "https://github.com/christophbue"
-		},
-		{
-			"name": "Daniel Spors",
-			"homepage": "https://github.com/DaSpors"
-		}
-	],
-	"autoload": {
-		"files": [
-			"bootstrap.php"
-		]
-	},
-	"require": {
-        "scavix/wdf-core": "^1.0.1"
-	},
-    "extra":
+  "name": "scavix/wdf-leaflet",
+  "description": "Leaflet component",
+  "type": "library",
+  "license": "LGPL-3.0-or-later",
+  "authors": [
     {
-        "externals":
-        [
-            {
-                "name": "Leaflet",
-                "version": "1.9.4",
-                "homepage": "https://leafletjs.com",
-                "description": "Leaflet is the leading open-source JavaScript library for building powerful interactive maps.",
-                "license": "BSD 2-Clause",
-                "files":
-                {
-                    "res/leaflet.js":"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
-                    "res/leaflet.css":"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-                }
-            }
-        ]
+      "name": "Scavix Software GmbH & Co. KG",
+      "email": "info@scavix.com",
+      "homepage": "http://www.scavix.com/"
+    },
+    {
+      "name": "Christoph Bünger",
+      "homepage": "https://github.com/christophbue"
+    },
+    {
+      "name": "Daniel Spors",
+      "homepage": "https://github.com/DaSpors"
     }
+  ],
+  "autoload": {
+    "files": [
+      "bootstrap.php"
+    ]
+  },
+  "require": {
+    "scavix/wdf-core": "^1.0.1"
+  },
+  "extra": {
+    "externals": [
+      {
+        "name": "Leaflet",
+        "version": "1.9.4",
+        "homepage": "https://leafletjs.com",
+        "description": "Leaflet is the leading open-source JavaScript library for building powerful interactive maps.",
+        "license": "BSD 2-Clause",
+        "files": {
+          "res/leaflet.js": "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
+          "res/leaflet.css": "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        }
+      }
+    ]
+  }
 }
