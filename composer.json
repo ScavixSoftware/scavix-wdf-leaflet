@@ -37,6 +37,7 @@
                 "homepage": "https://leafletjs.com",
                 "description": "Leaflet is the leading open-source JavaScript library for building powerful interactive maps.",
                 "license": "BSD 2-Clause",
+                "author": "Vladimir Agafonkin",
                 "files":
                 {
                     "res/leaflet.js":"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
