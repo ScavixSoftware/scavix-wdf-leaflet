@@ -102,7 +102,6 @@ class LeafLet extends Control
     {
         if( $value === null )
             return $this->Options[$name];
-        //log_trace($this->id.': '.$name.' > ',$value);
         $this->Options[$name] = $value;
         return $this;
     }
@@ -126,7 +125,6 @@ class LeafLet extends Control
         $opts = system_to_json($opts);
 
         $this->script("L.tileLayer('$url',$opts).addTo($map);");
-        // $markers = "$('#{self}').data('markers')";
         if($this->_markers)
             $this->script("var markers = new Array();");
 
@@ -136,8 +134,8 @@ class LeafLet extends Control
             $points = [];
             foreach( $polygon['points'] as $point )
             {
-                $lat = ifavail($point,'lat','latitude','Latitude','Lat');
-                $lng = ifavail($point,'lng','longitude','Longitude','Lng');
+                $lat = $point['lat'] ?? $point['latitude'] ?? $point['Latitude'] ?? $point['Lat'] ?? null;
+                $lng = $point['lng'] ?? $point['longitude'] ?? $point['Longitude'] ?? $point['Lng'] ?? null;
                 if( !$lat )
                     $lat = array_shift($point);
                 if( !$lng )
