@@ -167,7 +167,7 @@ class LeafLet extends Control
             $cb = "if(r.length > 0) { al = true; {$map}.eachLayer(function(l) { if(typeof(l._latlng) != 'undefined') { if((l._latlng.lat == r[0].lat) && (l._latlng.lng == r[0].lon)) { al = false; }};}); if(!al) return; L.marker([r[0].lat,r[0].lon],{title:'$tooltip'||r[0].display_name}).bindPopup('$popup'||r[0].display_name).addTo($map); }";
             $city = '';
             if(strpos($address, ', ') !== false)
-                $city = array_last(explode(', ', $address));
+                $city = substr_from($address, ', ');
             if($city != '')
                 $cb .= " else { wdf.get('$q',".json_encode(['format'=>'json','limit'=>1,'q' => $city]).",function(r){ $cb }); }";
 
