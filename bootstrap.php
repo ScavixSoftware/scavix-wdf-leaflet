@@ -32,6 +32,5 @@ Wdf::RegisterPackage('leaflet', 'leaflet_init');
  */
 function leaflet_init()
 {
-    classpath_add(__DIR__ . '/lib');
     add_wdfresource_dir(__DIR__ . '/res');
 }
