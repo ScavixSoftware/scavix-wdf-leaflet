@@ -56,11 +56,13 @@ class LeafLet extends Control
             [
                 'url' => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 'attribution' => '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                'csp' => 'https://*.tile.openstreetmap.org',
             ],
         'openstreetmap_bw' =>
             [
                 'url' => 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
                 'attribution' => '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                'csp' => 'https://*.tile.wmflabs.org',
             ],
         'openstreetmap_hot' =>
             [
@@ -71,16 +73,19 @@ class LeafLet extends Control
             [
                 'url' => 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
                 'attribution' => 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+                'csp' => 'https://*.tile.opentopomap.org',
             ],
         'openmapsurfer_roads' =>
             [
                 'url' => 'https://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}',
                 'attribution' => 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                'csp' => 'https://korona.geog.uni-heidelberg.de',
             ],
         'esri_worldstreetmap' =>
             [
                 'url' => 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
                 'attribution' => 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
+                'csp' => 'https://server.arcgisonline.com',
             ],
     ];
 
@@ -121,8 +126,11 @@ class LeafLet extends Control
         // set tileLayer
         $opts = self::$providers[$this->TileProvider];
         $url = $opts['url']; unset($opts['url']);
+        \ScavixWDF\Wdf::Response()->addTrustedSite($opts['csp']);
+        unset($opts['csp']);
         $opts['crossOrigin'] = '';
         $opts = system_to_json($opts);
+
 
         $this->script("L.tileLayer('$url',$opts).addTo($map);");
         if($this->_markers)
@@ -157,6 +165,7 @@ class LeafLet extends Control
 
         // add addresses
         $q = "https://nominatim.openstreetmap.org/search";
+        \ScavixWDF\Wdf::Response()->addTrustedSite($q);
         $prms = ['format'=>'json','limit'=>1];
         foreach( $this->_addresses as $a )
         {
